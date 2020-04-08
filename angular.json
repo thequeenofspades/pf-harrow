@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/harrow-app-theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -92,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -121,8 +123,16 @@
               "devServerTarget": "pf-harrow:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "pf-harrow"
+    }
+  },
+  "defaultProject": "pf-harrow",
+  "cli": {
+    "analytics": "e5ce98c1-4613-4709-a756-709c6bf79903"
+  }
 }

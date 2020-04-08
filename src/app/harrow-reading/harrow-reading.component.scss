@@ -1,0 +1,35 @@
+@import '~@angular/material/theming';
+
+.card-grid {
+    margin: min(2vw, 2vh);
+    height: 86vh;
+    width: min(86vh, 96vw);
+}
+
+.card {
+    height: 100%;
+}
+
+.card-glow {
+    height: 90%;
+}
+
+.card-image {
+    height: 100%;
+}
+
+.card-misaligned {
+    transform: rotate(180deg);
+}
+
+.card-true-match {
+    @include mat-elevation(12, blue, 0.8);
+}
+
+.card-partial-match {
+    @include mat-elevation(12, white, 0.8);
+}
+
+.card-opposite-match {
+    @include mat-elevation(12, red, 0.8);
+}

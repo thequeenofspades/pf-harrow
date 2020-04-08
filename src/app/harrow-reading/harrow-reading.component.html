@@ -1,0 +1,22 @@
+<div fxLayout="column" fxLayoutAlign="space-around center">
+    <mat-grid-list cols="3" rowHeight="fit" gutterSize="1vh" class="card-grid">
+        <mat-grid-tile *ngFor="let card of spread; index as i">
+        <div    class="card">
+        <div class="card-glow"
+            [ngClass]="{
+                'card-true-match': getTrueMatch(card, i),
+                'card-partial-match': getPartialMatch(card, i),
+                'card-opposite-match': getOppositeMatch(card, i)
+            }">
+                <img    class="card-image"
+                        [ngClass]="{'card-misaligned': misaligned(card, i)}"
+                        src="assets/img/{{card.name}}.png">
+            </div>
+        </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <div fxLayoutAlign="center center" style="height:10vh">
+        <button mat-flat-button color="primary" (click)="generateReading()">Generate Reading</button>
+    </div>
+</div>
