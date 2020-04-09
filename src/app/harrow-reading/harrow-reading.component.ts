@@ -3,6 +3,7 @@ import { Card, CARDS, misaligned, MatchType, getMatchType } from '../cards';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription, Subject, Observable } from 'rxjs';
 import { count } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-harrow-reading',
@@ -21,7 +22,9 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   showDescriptions: boolean;
   spread: Card[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.spread = [];
@@ -96,6 +99,12 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   onImageLoad(index: number): void {
     this.numImgsLoaded++;
     this.imgLoadCounter.next(this.numImgsLoaded);
+  }
+
+  showCopiedSnackbar(): void {
+    this.snackbar.open("Copied URL for sharing", undefined, {
+      duration: 1000
+    });
   }
 
   private getCardById(id: number): Card {

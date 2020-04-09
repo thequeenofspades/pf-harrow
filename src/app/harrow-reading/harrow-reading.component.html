@@ -32,7 +32,10 @@
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px" style="height:10vh">
         <button mat-flat-button color="primary" (click)="generateReading()">Draw Cards</button>
         <ng-container *ngIf="spread.length">
-            <button mat-flat-button color="accent" [cdkCopyToClipboard]="getShareUrl()">Copy URL</button>
+            <button mat-flat-button
+                    color="accent"
+                    (click)="showCopiedSnackbar()"
+                    [cdkCopyToClipboard]="getShareUrl()">Copy URL</button>
         </ng-container>
     </div>
 </div>
