@@ -1,27 +1,15 @@
-# PfHarrow
+# Pathfinder Harrow
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+This is a minimalistic web app designed to allow Pathfinder GMs to perform virtual harrow readings for their players.
 
-## Development server
+![App screenshot](https://i.imgur.com/j7y2SLR.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Backstory
 
-## Code scaffolding
+During the COVID-19 pandemic in early 2020, I found myself gearing up to run the Curse of the Crimson Throne AP for my friends... online. _What to do with this fancy physical harrow deck I bought?_ I asked myself. I briefly imagined holding up cards to my webcam, one at a time. No, there had to be a better solution. So with 5 days until my campaign was due to begin, I decided to create a web app.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Now you, fellow Pathfinder GM, can use my pandemic project to help you practice your harrow readings or do full-fledged readings for your remote players.
 
-## Build
+## Coming soon
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+I honestly don't know if, when, or how I'll be updating this web app. So if you have a feature request or a bug report, file an issue and see what happens, I guess.
