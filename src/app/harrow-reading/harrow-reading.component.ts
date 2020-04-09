@@ -15,8 +15,10 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   private numImgsLoaded: number;
   private params: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9'];
   private paramMapSubscription: Subscription;
+  private queryParamsSubscription: Subscription;
 
   allImgsLoaded: boolean;
+  showDescriptions: boolean;
   spread: Card[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router) { }
@@ -28,11 +30,19 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
         this.initSpread(paramMap);
       }
     });
+    this.queryParamsSubscription = this.route.queryParamMap.subscribe((queryParamMap: ParamMap) => {
+      if (queryParamMap.get("showDesc")) {
+        this.showDescriptions = true;
+      } else {
+        this.showDescriptions = false;
+      }
+    })
   }
 
   ngOnDestroy(): void {
-    this.imgLoadCounterSubscription.unsubscribe();
-    this.paramMapSubscription.unsubscribe();
+    this.imgLoadCounterSubscription?.unsubscribe();
+    this.paramMapSubscription?.unsubscribe();
+    this.queryParamsSubscription?.unsubscribe();
   }
   
   initSpread(paramMap: ParamMap): void {
@@ -52,7 +62,11 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
 
   generateReading(): void {
     let cardIds: string[] = this.shuffle(CARDS).slice(0, 9).map((card: Card) => String(card.id));
-    this.router.navigate(['/reading'].concat(cardIds));
+    this.router.navigate(['/reading'].concat(cardIds), {
+      queryParams: {
+        'showDesc': true
+      }
+    });
   }
 
   getTrueMatch(card: Card, position: number): boolean {
@@ -65,6 +79,14 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
 
   getOppositeMatch(card: Card, position: number): boolean {
     return getMatchType(card, position) == MatchType.OppositeMatch;
+  }
+
+  getShareUrl(): string {
+    let url: string = "pathfinder-harrow.web.app/reading/";
+    this.spread.forEach((card: Card) => {
+      url = url + String(card.id) + "/";
+    });
+    return url;
   }
 
   misaligned(card: Card, position: number): boolean {
