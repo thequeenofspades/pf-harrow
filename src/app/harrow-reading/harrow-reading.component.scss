@@ -18,6 +18,10 @@
     height: 100%;
 }
 
+.card-loading {
+    opacity: 0;
+}
+
 .card-misaligned {
     transform: rotate(180deg);
 }
