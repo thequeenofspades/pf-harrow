@@ -6,7 +6,9 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -17,7 +19,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ClipboardModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatDialogModule,
     MatGridListModule,
+    MatIconModule,
     MatSidenavModule,
     MatSnackBarModule,
   ],
@@ -25,7 +29,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ClipboardModule,
     FlexLayoutModule,
     MatButtonModule,
+    MatDialogModule,
     MatGridListModule,
+    MatIconModule,
     MatSidenavModule,
     MatSnackBarModule,
   ]

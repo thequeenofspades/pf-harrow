@@ -30,6 +30,9 @@
     </mat-grid-list>
 
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px" style="height:10vh">
+        <button mat-icon-button (click)="openHelpDialog()">
+            <mat-icon>help</mat-icon>
+        </button>
         <button mat-flat-button color="primary" (click)="generateReading()">Draw Cards</button>
         <ng-container *ngIf="spread.length">
             <button mat-flat-button

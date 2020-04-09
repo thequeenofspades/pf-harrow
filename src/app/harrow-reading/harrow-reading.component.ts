@@ -4,6 +4,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription, Subject, Observable } from 'rxjs';
 import { count } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
 
 @Component({
   selector: 'app-harrow-reading',
@@ -22,7 +24,8 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   showDescriptions: boolean;
   spread: Card[] = [];
 
-  constructor(private route: ActivatedRoute,
+  constructor(private dialog: MatDialog,
+              private route: ActivatedRoute,
               private router: Router,
               private snackbar: MatSnackBar) { }
 
@@ -99,6 +102,10 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   onImageLoad(index: number): void {
     this.numImgsLoaded++;
     this.imgLoadCounter.next(this.numImgsLoaded);
+  }
+
+  openHelpDialog(): void {
+    this.dialog.open(HelpDialogComponent);
   }
 
   showCopiedSnackbar(): void {

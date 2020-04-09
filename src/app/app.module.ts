@@ -8,10 +8,12 @@ import { AppMaterialModule } from './app-material/app-material.module';
 import { HarrowReadingModule } from './harrow-reading/harrow-reading.module';
 
 import { AppComponent } from './app.component';
+import { HelpDialogComponent } from './help-dialog/help-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HelpDialogComponent,
   ],
   imports: [
     BrowserModule,

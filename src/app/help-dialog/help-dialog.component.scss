@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+.card-image {
+    height: 20vh;
+}
+
+.card-misaligned {
+    height: 20vh;
+    transform: rotate(180deg);
+}
+
+.card-true-match {
+    height: 20vh;
+    @include mat-elevation(12, blue, 0.8);
+}
+
+.card-partial-match {
+    height: 20vh;
+    @include mat-elevation(12, white, 0.8);
+}
+
+.card-opposite-match {
+    height: 20vh;
+    @include mat-elevation(12, red, 0.8);
+}

@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>How to Use</h1>
+<mat-dialog-content>
+    <p>Click <button mat-flat-button color="primary">Draw Cards</button> to generate a new harrow spread of 9 cards.</p>
+    <p>Click <button mat-flat-button color="accent">Copy URL</button> to copy a player-safe URL to your clipboard.
+        This URL will not show descriptions for the cards when they are hovered.</p>
+    <div fxLayout="row" fxLayoutGap="10px">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+            <div class="card-misaligned">
+                <img class="card-image" src="assets/img/The Avalanche.png">
+            </div>
+            <p>A card displayed upside-down is misaligned.</p>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+            <div class="card-true-match">
+                <img class="card-image" src="assets/img/The Avalanche.png">
+            </div>
+            <p>A card with a blue glow is a True Match.</p>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+            <div class="card-partial-match">
+                <img class="card-image" src="assets/img/The Avalanche.png">
+            </div>
+            <p>A card with a yellow glow is a Partial Match.</p>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+            <div class="card-opposite-match">
+                <img class="card-image" src="assets/img/The Avalanche.png">
+            </div>
+            <p>A card with a red glow is an Opposite Match.</p>
+        </div>
+    </div>
+</mat-dialog-content>
