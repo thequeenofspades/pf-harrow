@@ -27,6 +27,7 @@
                 </div>
             </div>
         </mat-grid-tile>
+        <div fxLayoutAlign="center center" class="loading-msg" *ngIf="!allImgsLoaded">{{ loadingMsg }}</div>
     </mat-grid-list>
 
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px" style="height:10vh">

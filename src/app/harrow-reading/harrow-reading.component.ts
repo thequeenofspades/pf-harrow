@@ -21,6 +21,7 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   private queryParamsSubscription: Subscription;
 
   allImgsLoaded: boolean;
+  loadingMsg: string;
   showDescriptions: boolean;
   spread: Card[] = [];
 
@@ -55,6 +56,7 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
     this.allImgsLoaded = false;
     this.numImgsLoaded = 0;
     this.imgLoadCounter.next(0);
+    this.loadingMsg = "Loading..."
     this.spread = [];
     this.params.forEach(param => {
       this.spread.push(this.getCardById(Number(paramMap.get(param))));
