@@ -11,7 +11,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -25,7 +24,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatSidenavModule,
     MatSnackBarModule,
-    MatTooltipModule
   ],
   exports: [
     ClipboardModule,
@@ -36,7 +34,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatSidenavModule,
     MatSnackBarModule,
-    MatTooltipModule
   ]
 })
 export class AppMaterialModule { }

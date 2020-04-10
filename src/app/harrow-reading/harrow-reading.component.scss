@@ -1,20 +1,5 @@
 @import '~@angular/material/theming';
 
-.choosing {
-    height: 86vh;
-    max-height: 86vh;
-}
-
-.choosing-card-container {
-    box-sizing: border-box;
-    max-height: 20vh;
-    padding: 10px;
-}
-
-.choosing-card {
-    height: 100%;
-}
-
 .card-grid {
     margin: min(2vw, 2vh);
     height: 86vh;
@@ -75,17 +60,4 @@
 
 .card-opposite-match {
     @include mat-elevation(12, red, 0.8);
-}
-
-.ability-card {
-    border: 12px groove white;
-}
-
-.role-card {
-    border: 16px double white;
-}
-
-.description-tooltip {
-    background: rgba(0,0,0,0.5);
-    font-size: small;
 }

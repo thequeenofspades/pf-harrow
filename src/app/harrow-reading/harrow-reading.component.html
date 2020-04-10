@@ -1,55 +1,39 @@
 <div fxLayout="column" fxLayoutAlign="space-around center">
-    <div fxLayout="row" fxLayoutAlign="center center">
-        <div class="choosing" fxLayout="column">
-            <div    *ngFor="let card of choosing"
-                    class="choosing-card-container"
-                    [style.height.%]="100/choosing.length">
-                <img    class="choosing-card"
-                        [matTooltip]="showDescriptions ? card.description : ''"
-                        matTooltipClass="description-tooltip"
-                        matTooltipPosition="left"
-                        src="assets/img/{{card.name}}.png">
-            </div>
-        </div>
-        <mat-grid-list cols="3" rowHeight="fit" gutterSize="1vh" class="card-grid">
-            <mat-grid-tile *ngFor="let card of spread; index as i">
-                <div    class="card"
-                        (mouseenter)="card.showDescription=true"
-                        (mouseleave)="card.showDescription=false"
-                        (press)="card.showDescription=true"
-                        [ngClass]="{'card-loading': !allImgsLoaded}">
-                    <div    class="card-glow"
-                            [ngClass]="{
-                                'card-true-match': getTrueMatch(card, i),
-                                'card-partial-match': getPartialMatch(card, i),
-                                'card-opposite-match': getOppositeMatch(card, i),
-                                'ability-card': getAbilityCard(card),
-                                'role-card': getRoleCard(card)
-                            }">
-                        <img    class="card-image"
-                                [ngClass]="{'card-misaligned': misaligned(card, i)}"
-                                (load)="onImageLoad(i)"
-                                src="assets/img/{{card.name}}.png">
-                        <div    *ngIf="card.showDescription && showDescriptions"
-                                class="card-description">
-                            {{ card.description }}
-                            <ng-container *ngIf="misaligned(card, i)">
-                                <hr>
-                                {{ card.misalignedDescription }}
-                            </ng-container>
-                        </div>
+    <mat-grid-list cols="3" rowHeight="fit" gutterSize="1vh" class="card-grid">
+        <mat-grid-tile *ngFor="let card of spread; index as i">
+            <div    class="card"
+                    (mouseenter)="card.showDescription=true"
+                    (mouseleave)="card.showDescription=false"
+                    (press)="card.showDescription=true"
+                    [ngClass]="{'card-loading': !allImgsLoaded}">
+                <div    class="card-glow"
+                        [ngClass]="{
+                            'card-true-match': getTrueMatch(card, i),
+                            'card-partial-match': getPartialMatch(card, i),
+                            'card-opposite-match': getOppositeMatch(card, i)
+                        }">
+                    <img    class="card-image"
+                            [ngClass]="{'card-misaligned': misaligned(card, i)}"
+                            (load)="onImageLoad(i)"
+                            src="assets/img/{{card.name}}.png">
+                    <div    *ngIf="card.showDescription && showDescriptions"
+                            class="card-description">
+                        {{ card.description }}
+                        <ng-container *ngIf="misaligned(card, i)">
+                            <hr>
+                            {{ card.misalignedDescription }}
+                        </ng-container>
                     </div>
                 </div>
-            </mat-grid-tile>
-            <div fxLayoutAlign="center center" class="loading-msg" *ngIf="!allImgsLoaded">{{ loadingMsg }}</div>
-        </mat-grid-list>
-    </div>
+            </div>
+        </mat-grid-tile>
+        <div fxLayoutAlign="center center" class="loading-msg" *ngIf="!allImgsLoaded">{{ loadingMsg }}</div>
+    </mat-grid-list>
 
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px" style="height:10vh">
         <button mat-icon-button (click)="openHelpDialog()">
             <mat-icon>help</mat-icon>
         </button>
-        <button mat-stroked-button (click)="choose()">Choose</button>
         <button mat-flat-button color="primary" (click)="generateReading()">Draw Cards</button>
         <ng-container *ngIf="spread.length">
             <button mat-flat-button

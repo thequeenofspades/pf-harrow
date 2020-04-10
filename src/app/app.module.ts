@@ -9,13 +9,11 @@ import { HarrowReadingModule } from './harrow-reading/harrow-reading.module';
 
 import { AppComponent } from './app.component';
 import { HelpDialogComponent } from './help-dialog/help-dialog.component';
-import { ChoosingComponent } from './choosing/choosing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelpDialogComponent,
-    ChoosingComponent,
   ],
   imports: [
     BrowserModule,
