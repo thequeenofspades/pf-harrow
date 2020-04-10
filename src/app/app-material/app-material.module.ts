@@ -9,8 +9,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -22,8 +24,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatGridListModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatSidenavModule,
     MatSnackBarModule,
+    MatTooltipModule
   ],
   exports: [
     ClipboardModule,
@@ -32,8 +36,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatGridListModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatSidenavModule,
     MatSnackBarModule,
+    MatTooltipModule
   ]
 })
 export class AppMaterialModule { }

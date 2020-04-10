@@ -2,9 +2,6 @@
     <mat-grid-list cols="3" rowHeight="fit" gutterSize="1vh" class="card-grid">
         <mat-grid-tile *ngFor="let card of spread; index as i">
             <div    class="card"
-                    (mouseenter)="card.showDescription=true"
-                    (mouseleave)="card.showDescription=false"
-                    (press)="card.showDescription=true"
                     [ngClass]="{'card-loading': !allImgsLoaded}">
                 <div    class="card-glow"
                         [ngClass]="{
@@ -14,20 +11,16 @@
                         }">
                     <img    class="card-image"
                             [ngClass]="{'card-misaligned': misaligned(card, i)}"
+                            [matTooltip]="showDescriptions ? getDescription(card, i) : ''"
+                            matTooltipClass="description-tooltip"
                             (load)="onImageLoad(i)"
                             src="{{getCardUrl(card)}}">
-                    <div    *ngIf="card.showDescription && showDescriptions"
-                            class="card-description">
-                        {{ card.description }}
-                        <ng-container *ngIf="misaligned(card, i)">
-                            <hr>
-                            {{ card.misalignedDescription }}
-                        </ng-container>
-                    </div>
                 </div>
             </div>
         </mat-grid-tile>
-        <div fxLayoutAlign="center center" class="loading-msg" *ngIf="!allImgsLoaded">{{ loadingMsg }}</div>
+        <div fxLayoutAlign="center center" class="loading-msg" *ngIf="!allImgsLoaded">
+            <mat-spinner></mat-spinner>
+        </div>
     </mat-grid-list>
 
     <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px" style="height:10vh">
