@@ -101,6 +101,14 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
     return getUrl(card);
   }
 
+  getDescription(card: Card, position: number): string {
+    let desc = card.description;
+    if (this.misaligned(card, position)) {
+      desc = desc + ' MISALIGNED: ' + card.misalignedDescription;
+    }
+    return desc;
+  }
+
   misaligned(card: Card, position: number): boolean {
     return misaligned(card, position);
   }
