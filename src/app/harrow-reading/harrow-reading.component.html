@@ -15,7 +15,7 @@
                     <img    class="card-image"
                             [ngClass]="{'card-misaligned': misaligned(card, i)}"
                             (load)="onImageLoad(i)"
-                            src="assets/img/{{card.name}}.png">
+                            src="{{getCardUrl(card)}}">
                     <div    *ngIf="card.showDescription && showDescriptions"
                             class="card-description">
                         {{ card.description }}
