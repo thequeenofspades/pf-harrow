@@ -83,23 +83,25 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
         this.ability = data.ability;
         this.choosing = this.shuffle(CARDS.filter(card => 
           card.ability == data.ability)).slice(0, data.playerNumber);
-        let queryParams = {'showDesc': true};
-        for (let i = 0; i < this.choosing.length; i++) {
-          queryParams['r' + String(i)] = this.choosing[i].id;
-        }
-        this.router.navigate(['/reading'].concat(this.spread.map(card => String(card.id))), {
-          queryParams: queryParams
-        });
+        this.navigateToNewUrl();
+    });
+  }
+
+  navigateToNewUrl(cardIds?: string[]): void {
+    let queryParams = {'showDesc': true};
+    for (let i = 0; i < this.choosing.length; i++) {
+      queryParams['r' + String(i)] = this.choosing[i].id;
+    }
+    this.router.navigate(['/reading'].concat(
+      cardIds ? cardIds: this.spread.map(card => String(card.id))
+    ), {
+      queryParams: queryParams
     });
   }
 
   generateReading(): void {
     let cardIds: string[] = this.shuffle(CARDS).slice(0, 9).map((card: Card) => String(card.id));
-    this.router.navigate(['/reading'].concat(cardIds), {
-      queryParams: {
-        'showDesc': true
-      }
-    });
+    this.navigateToNewUrl(cardIds);
   }
 
   getAbilityCard(card: Card): boolean {

@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="space-around center">
-    
-    <div fxLayout="row" fxLayoutAlign="center center">
-        <div class="choosing" fxLayout="column">
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+        <div class="choosing" fxLayout="column" fxLayout.xs="row">
             <div    *ngFor="let card of choosing"
                     class="choosing-card-container"
                     [style.height.%]="100/choosing.length">
