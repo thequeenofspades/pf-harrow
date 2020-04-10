@@ -9,6 +9,7 @@ import { HarrowReadingModule } from './harrow-reading/harrow-reading.module';
 
 import { AppComponent } from './app.component';
 import { HelpDialogComponent } from './help-dialog/help-dialog.component';
+import { ChoosingComponent } from './choosing/choosing.component';
 import { CardPreviewComponent } from './card-preview/card-preview.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { CardPreviewComponent } from './card-preview/card-preview.component';
     AppComponent,
     HelpDialogComponent,
     CardPreviewComponent,
+    ChoosingComponent
   ],
   imports: [
     BrowserModule,

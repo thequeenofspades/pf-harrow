@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Card, CARDS, misaligned, MatchType, getMatchType, getUrl } from '../cards';
+import { Card, CARDS, misaligned, MatchType, getMatchType, getUrl, Ability } from '../cards';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription, Subject, Observable } from 'rxjs';
-import { count } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
+import { ChoosingComponent } from '../choosing/choosing.component';
 import { CardPreviewComponent } from '../card-preview/card-preview.component';
 
 @Component({
@@ -21,7 +21,9 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   private paramMapSubscription: Subscription;
   private queryParamsSubscription: Subscription;
 
+  ability: Ability;
   allImgsLoaded: boolean = true;
+  choosing: Card[] = [];
   loadingMsg: string;
   showDescriptions: boolean;
   spread: Card[] = [];
@@ -43,6 +45,12 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
         this.showDescriptions = true;
       } else {
         this.showDescriptions = false;
+      }
+      this.choosing = [];
+      for (let i = 0; i < 9; i++) {
+        if (queryParamMap.get('r' + String(i))) {
+          this.choosing.push(this.getCardById(Number(queryParamMap.get('r' + String(i)))));
+        }
       }
     })
   }
@@ -69,13 +77,39 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
     });
   }
 
+  choose(): void {
+    this.dialog.open(ChoosingComponent).afterClosed().subscribe(
+      (data: {ability: Ability, playerNumber: number}) => {
+        this.ability = data.ability;
+        this.choosing = this.shuffle(CARDS.filter(card => 
+          card.ability == data.ability)).slice(0, data.playerNumber);
+        this.navigateToNewUrl();
+    });
+  }
+
+  navigateToNewUrl(cardIds?: string[]): void {
+    let queryParams = {'showDesc': true};
+    for (let i = 0; i < this.choosing.length; i++) {
+      queryParams['r' + String(i)] = this.choosing[i].id;
+    }
+    this.router.navigate(['/reading'].concat(
+      cardIds ? cardIds: this.spread.map(card => String(card.id))
+    ), {
+      queryParams: queryParams
+    });
+  }
+
   generateReading(): void {
     let cardIds: string[] = this.shuffle(CARDS).slice(0, 9).map((card: Card) => String(card.id));
-    this.router.navigate(['/reading'].concat(cardIds), {
-      queryParams: {
-        'showDesc': true
-      }
-    });
+    this.navigateToNewUrl(cardIds);
+  }
+
+  getAbilityCard(card: Card): boolean {
+    return card.ability == this.ability;
+  }
+
+  getRoleCard(card: Card): boolean {
+    return this.choosing.findIndex((roleCard: Card) => roleCard.id == card.id) > -1;
   }
 
   getTrueMatch(card: Card, position: number): boolean {
@@ -91,10 +125,19 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   }
 
   getShareUrl(): string {
-    let url: string = "pathfinder-harrow.web.app/reading/";
+    let url: string = "pathfinder-harrow.web.app/reading";
     this.spread.forEach((card: Card) => {
-      url = url + String(card.id) + "/";
+      url = url + "/" + String(card.id);
     });
+    if (this.choosing.length) {
+      url = url + "?";
+    }
+    for (let i = 0; i < this.choosing.length; i++) {
+      if (i > 0) {
+        url = url + "&";
+      }
+      url = url + "r" + String(i) + "=" + String(this.choosing[i].id);
+    }
     return url;
   }
 
