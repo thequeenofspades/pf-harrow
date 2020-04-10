@@ -13,6 +13,7 @@
                             [ngClass]="{'card-misaligned': misaligned(card, i)}"
                             [matTooltip]="showDescriptions ? getDescription(card, i) : ''"
                             matTooltipClass="description-tooltip"
+                            (click)="previewCard(card, i)"
                             (load)="onImageLoad(i)"
                             src="{{getCardUrl(card)}}">
                 </div>

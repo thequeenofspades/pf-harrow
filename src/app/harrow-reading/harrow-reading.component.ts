@@ -6,6 +6,7 @@ import { count } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
+import { CardPreviewComponent } from '../card-preview/card-preview.component';
 
 @Component({
   selector: 'app-harrow-reading',
@@ -120,6 +121,15 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
 
   openHelpDialog(): void {
     this.dialog.open(HelpDialogComponent);
+  }
+
+  previewCard(card: Card, position: number): void {
+    this.dialog.open(CardPreviewComponent, {
+      data: {
+        card: card,
+        position: position
+      }
+    });
   }
 
   showCopiedSnackbar(): void {
