@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -23,6 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDialogModule,
     MatGridListModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatSidenavModule,
     MatSnackBarModule,
     MatTooltipModule
@@ -34,6 +36,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDialogModule,
     MatGridListModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatSidenavModule,
     MatSnackBarModule,
     MatTooltipModule

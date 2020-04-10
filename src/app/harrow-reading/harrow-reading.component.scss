@@ -38,22 +38,8 @@
     position: relative;
 }
 
-.card-description {
-    background-color: rgba(0,0,0,0.7);
-    display: inline-block;
-    font-size: small;
-    @media (max-width: 2000px) {
-        font-size: smaller;
-    }
-    left: 0;
-    max-height: 100%;
-    max-width: 100%;
-    padding: 1em;
-    position: absolute;
-    top: 0;
-}
-
 .card-image {
+    cursor: pointer;
     height: 100%;
 }
 
@@ -85,7 +71,7 @@
     border: 16px double white;
 }
 
-.description-tooltip {
-    background: rgba(0,0,0,0.5);
+::ng-deep .description-tooltip {
+    background-color: rgba(30,30,30);
     font-size: small;
 }

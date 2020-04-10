@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Card, CARDS, misaligned, MatchType, getMatchType, Ability } from '../cards';
+import { Card, CARDS, misaligned, MatchType, getMatchType, getUrl, Ability } from '../cards';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription, Subject, Observable } from 'rxjs';
-import { count } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
 import { ChoosingComponent } from '../choosing/choosing.component';
+import { CardPreviewComponent } from '../card-preview/card-preview.component';
 
 @Component({
   selector: 'app-harrow-reading',
@@ -22,7 +22,7 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   private queryParamsSubscription: Subscription;
 
   ability: Ability;
-  allImgsLoaded: boolean;
+  allImgsLoaded: boolean = true;
   choosing: Card[] = [];
   loadingMsg: string;
   showDescriptions: boolean;
@@ -139,6 +139,18 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
     return url;
   }
 
+  getCardUrl(card: Card): string {
+    return getUrl(card);
+  }
+
+  getDescription(card: Card, position: number): string {
+    let desc = card.description;
+    if (this.misaligned(card, position)) {
+      desc = desc + ' MISALIGNED: ' + card.misalignedDescription;
+    }
+    return desc;
+  }
+
   misaligned(card: Card, position: number): boolean {
     return misaligned(card, position);
   }
@@ -150,6 +162,15 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
 
   openHelpDialog(): void {
     this.dialog.open(HelpDialogComponent);
+  }
+
+  previewCard(card: Card, position: number): void {
+    this.dialog.open(CardPreviewComponent, {
+      data: {
+        card: card,
+        position: position
+      }
+    });
   }
 
   showCopiedSnackbar(): void {
