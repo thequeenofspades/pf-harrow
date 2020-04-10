@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Card, CARDS, misaligned, MatchType, getMatchType } from '../cards';
+import { Card, CARDS, misaligned, MatchType, getMatchType, getUrl } from '../cards';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription, Subject, Observable } from 'rxjs';
 import { count } from 'rxjs/operators';
@@ -95,6 +95,10 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
       url = url + String(card.id) + "/";
     });
     return url;
+  }
+
+  getCardUrl(card: Card): string {
+    return getUrl(card);
   }
 
   misaligned(card: Card, position: number): boolean {
