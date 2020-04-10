@@ -20,7 +20,7 @@ export class HarrowReadingComponent implements OnInit, OnDestroy {
   private paramMapSubscription: Subscription;
   private queryParamsSubscription: Subscription;
 
-  allImgsLoaded: boolean;
+  allImgsLoaded: boolean = true;
   loadingMsg: string;
   showDescriptions: boolean;
   spread: Card[] = [];
