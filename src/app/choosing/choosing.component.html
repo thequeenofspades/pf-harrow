@@ -1,13 +1,13 @@
 <div *ngIf="showAbilities" fxLayout="column" fxLayoutGap="10px">
     <div fxLayout="row" fxLayoutGap="10px">
-        <button mat-flat-button color="primary" (click)="chooseAbility('Str')">Strength</button>
-        <button mat-flat-button color="primary" (click)="chooseAbility('Dex')">Dexterity</button>
-        <button mat-flat-button color="primary" (click)="chooseAbility('Con')">Constitution</button>
+        <button mat-flat-button color="primary" (click)="chooseAbility(0)">Strength</button>
+        <button mat-flat-button color="primary" (click)="chooseAbility(1)">Dexterity</button>
+        <button mat-flat-button color="primary" (click)="chooseAbility(2)">Constitution</button>
     </div>
     <div fxLayout="row" fxLayoutGap="10px">
-        <button mat-flat-button color="primary" (click)="chooseAbility('Int')">Intelligence</button>
-        <button mat-flat-button color="primary" (click)="chooseAbility('Wis')">Wisdom</button>
-        <button mat-flat-button color="primary" (click)="chooseAbility('Cha')">Charisma</button>
+        <button mat-flat-button color="primary" (click)="chooseAbility(3)">Intelligence</button>
+        <button mat-flat-button color="primary" (click)="chooseAbility(4)">Wisdom</button>
+        <button mat-flat-button color="primary" (click)="chooseAbility(5)">Charisma</button>
     </div>
 </div>
 

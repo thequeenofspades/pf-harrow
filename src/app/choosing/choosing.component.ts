@@ -19,23 +19,8 @@ export class ChoosingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  chooseAbility(ability: string): void {
-    switch (ability) {
-      case ("Str"):
-        this.ability = Ability.Strength;
-        break;
-      case ("Dex"):
-        this.ability = Ability.Dexterity;
-        break;
-      case ("Con"):
-        this.ability = Ability.Constitution;
-      case ("Int"):
-        this.ability = Ability.Intelligence;
-      case ("Wis"):
-        this.ability = Ability.Wisdom;
-      case ("Cha"):
-        this.ability = Ability.Charisma;
-    }
+  chooseAbility(ability: number): void {
+    this.ability = ability;
     this.showAbilities = false;
     this.showPlayerNumber = true;
   }
